@@ -1,0 +1,5 @@
+[workspace]
+members = [
+    "src/supply_chain_rust_backend"
+]
+resolver = "2"
