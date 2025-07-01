@@ -27,6 +27,17 @@
       "workspace": "supply_chain_rust_frontend"
     }
   },
+
+   "networks": {
+    "ic": {
+      "providers": ["https://ic0.app"]
+    },
+    "local": {
+      "bind": "127.0.0.1:4943",
+      "type": "ephemeral"
+    }
+  },
+
   "defaults": {
     "build": {
       "args": "",
