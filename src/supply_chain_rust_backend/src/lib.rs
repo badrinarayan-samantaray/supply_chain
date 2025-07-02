@@ -156,3 +156,5 @@ fn get_products_by_owner(owner: String) -> Vec<Product> {
         .collect()
     })
 }
+
+ic_cdk::export_candid!();
