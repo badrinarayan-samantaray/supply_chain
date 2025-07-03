@@ -42,10 +42,11 @@ import VerifyOwnershipForm from "./components/forms/VerifyOwnershipForm";
 import AddCertificationForm from "./components/forms/AddCertificationForm";
 import ProductsByOwnerForm from "./components/forms/ProductsByOwnerForm";
 import ViewProductForm from "./components/forms/ViewProductForm";
-import ViewHistoryForm from "./components/forms/ViewCertificationForm";
+import ViewHistoryForm from "./components/forms/ViewHistoryForm";
 
-function App() {
+const App = () => {
   return (
+  
     <div>
       {/* Navbar */}
       <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-sm px-5">
@@ -107,28 +108,23 @@ function App() {
           </div>
         </div>
       </section>
-    </div>
-  );
-}
-
-const App = () => {
-  return (
-    <>
+    
+      {/* Additional Animated Section */}
       <LandingPage />
+
+      {  /* Forms Section */}
       <div id="forms" className="container my-5">
         <AddProductForm />
-        
-          <AddCertificationForm/>
-          <ProductsByOwnerForm />
-          <TransferOwnershipForm />
-          <VerifyOwnershipForm />
-          <ViewHistoryForm />
-          <ViewProductForm />
-        
+        <AddCertificationForm/>
+        <ProductsByOwnerForm />
+        <TransferOwnershipForm />
+        <VerifyOwnershipForm />
+        <ViewHistoryForm />
+        <ViewProductForm />
       </div>
-    </>
+    </div>
   );
-  };
+};
 
 export default App;
 
