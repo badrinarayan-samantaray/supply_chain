@@ -1,36 +1,60 @@
-// src/components/forms/TransferOwnershipForm.jsx
-import React, { useState } from 'react';
-import supplyChainActor from '../../utils/icp';
+import React, { useState } from "react";
+import supplyChainActor from "../../utils/icp";
+import BackgroundWrapper from "../BackgroundWrapper";
+import "../../form.scss";
 
-const TransferOwnershipForm = ({ onSubmit }) => {
-  const [form, setForm] = useState({ id: '', new_owner: '', metadata: '' });
+const TransferOwnershipForm = () => {
+  const [msg, setMsg] = useState("");
+  const [form, setForm] = useState({
+    productId: "", newOwner: ""
+  });
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const submitForm = (e) => {
+  const submitForm = async (e) => {
     e.preventDefault();
-    onSubmit(form);
+    try {
+      // TODO: Call appropriate actor method here
+      setMsg("✅ Success!");
+    } catch (err) {
+      setMsg("❌ Error: " + err.message);
+    }
   };
 
   return (
-    <form className="p-4 bg-light border rounded shadow-sm" onSubmit={submitForm}>
-      <h4>Transfer Ownership</h4>
-      <div className="mb-3">
-        <label>Product ID</label>
-        <input className="form-control" name="id" onChange={handleChange} required />
+    <BackgroundWrapper>
+      <div className="form-wrapper">
+        <form onSubmit={submitForm} className="form-container">
+          <h2 className="form-title">Transfer Ownership</h2>
+          <div className="form-group">
+            <input
+              type="text"
+              name="productId"
+              value={form.productId}
+              onChange={handleChange}
+              required
+              className="form-input"
+            />
+            <label className="form-label">Product Id</label>
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              name="newOwner"
+              value={form.newOwner}
+              onChange={handleChange}
+              required
+              className="form-input"
+            />
+            <label className="form-label">New Owner</label>
+          </div>
+          <button type="submit" className="form-button">Submit</button>
+          {msg && <div className="form-msg">{msg}</div>}
+        </form>
       </div>
-      <div className="mb-3">
-        <label>New Owner</label>
-        <input className="form-control" name="new_owner" onChange={handleChange} required />
-      </div>
-      <div className="mb-3">
-        <label>Metadata (optional)</label>
-        <input className="form-control" name="metadata" onChange={handleChange} />
-      </div>
-      <button className="btn btn-warning">Transfer</button>
-    </form>
+    </BackgroundWrapper>
   );
 };
 

@@ -1,26 +1,51 @@
-import React, { useState } from 'react';
-import supplyChainActor from '../../utils/icp';
+import React, { useState } from "react";
+import supplyChainActor from "../../utils/icp";
+import BackgroundWrapper from "../BackgroundWrapper";
+import "../../form.scss";
 
-const ProductsByOwnerForm = ({ onSubmit }) => {
-  const [owner, setOwner] = useState('');
+const ProductsByOwnerForm = () => {
+  const [msg, setMsg] = useState("");
+  const [form, setForm] = useState({
+    owner: ""
+  });
 
-  const submitForm = (e) => {
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const submitForm = async (e) => {
     e.preventDefault();
-    onSubmit(owner);
+    try {
+      // TODO: Call appropriate actor method here
+      setMsg("✅ Success!");
+    } catch (err) {
+      setMsg("❌ Error: " + err.message);
+    }
   };
 
   return (
-    <form className="p-4 bg-light border rounded shadow-sm" onSubmit={submitForm}>
-      <h4>Get Products by Owner</h4>
-      <input
-        className="form-control mb-3"
-        placeholder="Enter Owner Principal"
-        value={owner}
-        onChange={(e) => setOwner(e.target.value)}
-        required
-      />
-      <button className="btn btn-primary">Fetch</button>
-    </form>
+    <BackgroundWrapper>
+      <div className="form-wrapper">
+        <form onSubmit={submitForm} className="form-container">
+          <h2 className="form-title">Products By Owner</h2>
+          <div className="form-group">
+            <input
+              type="text"
+              name="owner"
+              value={form.owner}
+              onChange={handleChange}
+              required
+              className="form-input"
+            />
+            <label className="form-label">Owner</label>
+          </div>
+          <button type="submit" className="form-button">
+            Submit
+          </button>
+          {msg && <div className="form-msg">{msg}</div>}
+        </form>
+      </div>
+    </BackgroundWrapper>
   );
 };
 
