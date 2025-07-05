@@ -1,0 +1,29 @@
+type Product = record {
+  id : text;
+  name : text;
+  origin : text;
+  description : opt text;
+  history : vec Transaction;
+  certifications : vec text;
+  current_owner : text;
+};
+type Result = variant { Ok; Err : text };
+type Result_1 = variant { Ok : Product; Err : text };
+type Result_2 = variant { Ok : vec Transaction; Err : text };
+type Result_3 = variant { Ok : bool; Err : text };
+type Transaction = record {
+  to : text;
+  metadata : opt text;
+  from : text;
+  timestamp : nat64;
+};
+service : () -> {
+  add_certification : (text, text) -> (Result);
+  add_product : (text, text, text, vec text, opt text) -> (Result);
+  get_product : (text) -> (Result_1) query;
+  get_product_history : (text) -> (Result_2) query;
+  get_products_by_owner : (text) -> (vec Product) query;
+  get_valid_certificates : () -> (vec text) query;
+  transfer_ownership : (text, text, opt text) -> (Result);
+  verify_ownership : (text, text) -> (Result_3) query;
+}
