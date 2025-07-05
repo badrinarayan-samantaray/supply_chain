@@ -1,15 +1,50 @@
-// src/components/LandingPage.jsx
-import React from 'react';
-import 'animate.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import backgroundVideo from "../assets/VID_20240506_172609331 (1).mp4";
+import logo from "../assets/1782328_427236550775928_2158228152519053711_o.svg";
 
 const LandingPage = () => {
   return (
-    <div className="container text-center py-5 animate__animated animate__fadeInUp">
-      <h1 className="display-4 fw-bold">Blockchain-Enabled Supply Chain</h1>
-      <p className="lead">
-        Transparent, tamper-proof tracking from origin to consumer — powered by Internet Computer Protocol.
-      </p>
-      <a href="#forms" className="btn btn-primary btn-lg mt-4">Get Started</a>
+    <div className="landing-page">
+      {/* Background Video */}
+      <video autoPlay muted loop className="background-video">
+        <source src={backgroundVideo} type="video/mp4" />
+      </video>
+
+      {/* Overlay */}
+      <div className="overlay"></div>
+
+      {/* Header with Nav */}
+      <header className="header">
+        <div className="logo">
+          <img src={logo} alt="Logo" height="40" />
+        </div>
+        <nav className="nav-links">
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/dashboard/add-product">Add Product</Link></li>
+            <li><Link to="/dashboard/transfer">Transfer Ownership</Link></li>
+            <li><Link to="/dashboard/certify">Add Certification</Link></li>
+            <li><Link to="/dashboard/owner">By Owner</Link></li>
+            <li><Link to="/dashboard/verify">Verify Ownership</Link></li>
+            <li><Link to="/dashboard/history">View History</Link></li>
+            <li><Link to="/dashboard/view">View Product</Link></li>
+            <li><button className="btn btn-outline-light">Contact</button></li>
+          </ul>
+        </nav>
+      </header>
+
+      {/* Hero Section */}
+      <div className="hero-content">
+        <h1>Because the journey matters</h1>
+        <p>
+          Our blockchain-based traceability solution enables trust, coordination,
+          and transparency in fragmented supply chains.
+        </p>
+        <Link to="/dashboard/add-product">
+          <button className="btn btn-light">Get Started</button>
+        </Link>
+      </div>
     </div>
   );
 };
