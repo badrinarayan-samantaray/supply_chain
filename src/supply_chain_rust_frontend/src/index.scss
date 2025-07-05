@@ -57,6 +57,7 @@ body {
 
 /* Import Font */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+@import './form.scss';
 
 html, body {
   margin: 0;
@@ -65,7 +66,22 @@ html, body {
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;  // Allow scrolling for dashboard pages
 }
+.background-wrapper {
+  position: relative;
+  height: 100vh;
+  overflow-x: hidden;
+}
 
+.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  filter: brightness(0.5);
+}
 .video-background {
   position: fixed;
   top: 0;
@@ -89,25 +105,6 @@ html, body {
   align-items: center;
   padding: 2rem;
 }
-
-.nav-links {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.nav-links a {
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-  color: #535353;
-  transform: translateY(-5px);
-  transition: all 0.1s ease-in-out 0.1s;
-}
-
 .hero {
   position: absolute;
   top: 120px;
@@ -184,67 +181,15 @@ html, body {
   
   transition: background 0.3s ease;
 }
+.nav-links a:hover {
+color: #494949;
+transform: translateY(-5px);
+transition: all 0.1s ease-in-out 0.1s;
 
-@import './form.scss';
-
-.background-wrapper {
-  position: relative;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.background-video {
-  position: relative;
-  background-size: 100px;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  transform: translate(-50%, -50%);
-  object-fit: cover;
-  z-index: 1;
-  filter: brightness(0.5);
 }
 
 
-.overlay {
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.3);
-  z-index: 2;
-}
 
-.content-overlay {
-  position: relative;
-  z-index: 3;
-  padding: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
 
-.header {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 4;
-  background: rgba(0, 0, 0, 0.3);
-}
 
-.nav-links a {
-  margin-left: 1rem;
-  color: #fff;
-  text-decoration: none;
-}
 
-.logo img {
-  height: 40px;
-}
