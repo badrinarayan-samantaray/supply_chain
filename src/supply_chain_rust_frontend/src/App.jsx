@@ -40,7 +40,7 @@ function LandingPage() {
           <Link to="/dashboard/verify">Verify Ownership</Link>
           <Link to="/dashboard/history">View History</Link>
           <Link to="/dashboard/view">View Product</Link>
-          <a href="#" className="btn">Contact</a>
+          <a href="#" className="btn">Profile</a>
         </nav>
       </header>
 

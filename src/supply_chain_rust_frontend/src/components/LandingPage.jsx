@@ -30,7 +30,7 @@ const LandingPage = () => {
             <li><Link to="/dashboard/verify">Verify Ownership</Link></li>
             <li><Link to="/dashboard/history">View History</Link></li>
             <li><Link to="/dashboard/view">View Product</Link></li>
-            <li><button className="btn btn-outline-light">Contact</button></li>
+            <li><button className="btn btn-outline-light">Profile</button></li>
           </ul>
         </nav>
       </header>

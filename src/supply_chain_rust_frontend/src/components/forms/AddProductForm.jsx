@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import supplyChainActor from "../../utils/icp";
 import BackgroundWrapper from "../BackgroundWrapper";
+import "../../form.scss"; // Make sure this path is correct
 
 const AddProductForm = () => {
   const [msg, setMsg] = useState("");
@@ -27,6 +28,13 @@ const AddProductForm = () => {
         form.description ? [form.description] : []
       );
       setMsg("✅ Product added!");
+      setForm({
+        id: "",
+        name: "",
+        origin: "",
+        description: "",
+        certifications: "",
+      });
     } catch (err) {
       setMsg("❌ Error: " + err.message);
     }
@@ -34,29 +42,35 @@ const AddProductForm = () => {
 
   return (
     <BackgroundWrapper>
-      <form onSubmit={submitForm} className="form-container">
-        <h4>Add Product</h4>
-        <input name="id" placeholder="ID" className="form-control mb-2" onChange={handleChange} />
-        <input name="name" placeholder="Name" className="form-control mb-2" onChange={handleChange} />
-        <input name="origin" placeholder="Origin" className="form-control mb-2" onChange={handleChange} />
-        <input name="certifications" placeholder="Certifications (comma-separated)" className="form-control mb-2" onChange={handleChange} />
-        <textarea name="description" placeholder="Description" className="form-control mb-2" onChange={handleChange}></textarea>
-        <button type="submit" className="btn btn-primary">Submit</button>
-        {msg && <p className="mt-2">{msg}</p>}
-      </form>
+      <div className="form-wrapper">
+        <form onSubmit={submitForm} className="form-container">
+          <h2 className="form-title">Add Product</h2>
+
+          {["id", "name", "origin", "description", "certifications"].map((field) => (
+            <div key={field} className="form-group">
+              <input
+                type="text"
+                name={field}
+                value={form[field]}
+                onChange={handleChange}
+                required={field !== "description"}
+                className="form-input"
+              />
+              <label className="form-label">
+                {field.charAt(0).toUpperCase() + field.slice(1).replace("_", " ")}
+              </label>
+            </div>
+          ))}
+
+          <button type="submit" className="form-button">
+            Add Product
+          </button>
+
+          {msg && <div className="form-msg">{msg}</div>}
+        </form>
+      </div>
     </BackgroundWrapper>
   );
 };
 
 export default AddProductForm;
-
-// 🔁 Do the same for:
-// - TransferOwnershipForm.jsx
-// - AddCertificationForm.jsx
-// - ProductsByOwnerForm.jsx
-// - VerifyOwnershipForm.jsx
-// - ViewHistoryForm.jsx
-// - ViewProductForm.jsx
-// Just wrap with <BackgroundWrapper> and apply className="form-container"
-
-// ✅ Done!
