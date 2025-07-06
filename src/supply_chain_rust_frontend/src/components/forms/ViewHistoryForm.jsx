@@ -17,9 +17,9 @@ const ViewHistoryForm = () => {
     try {
       const result = await supplyChainActor.get_history(form.productId);
       setHistory(result);
-      setMsg("✅ History fetched!");
+      setMsg("History Fetched");
     } catch (err) {
-      setMsg("❌ Error: " + (err.message || JSON.stringify(err)));
+      setMsg("Error: " + (err.message || JSON.stringify(err)));
       setHistory([]);
     }
   };

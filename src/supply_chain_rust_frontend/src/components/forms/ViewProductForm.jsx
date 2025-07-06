@@ -22,22 +22,22 @@ const ViewProductForm = () => {
       // Try Rust-style: { Ok: { ... } }
       if (result?.Ok) {
         setProductData(result.Ok);
-        setMsg("✅ Product found!");
+        setMsg("Product found!");
         setShowResult(true);
       } 
       // Or Motoko-style direct object
       else if (result && typeof result === "object" && result.id) {
         setProductData(result);
-        setMsg("✅ Product found!");
+        setMsg("Product found!");
         setShowResult(true);
       } 
       else {
         setProductData(null);
-        setMsg("❌ Product not found.");
+        setMsg("Product not found.");
         setShowResult(false);
       }
     } catch (err) {
-      setMsg("❌ Error: " + (err.message || JSON.stringify(err)));
+      setMsg("Error: " + (err.message || JSON.stringify(err)));
       setProductData(null);
       setShowResult(false);
     }

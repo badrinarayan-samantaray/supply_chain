@@ -27,7 +27,7 @@ const AddProductForm = () => {
         form.certifications.split(",").map((c) => c.trim()),
         form.description ? [form.description] : []
       );
-      setMsg("✅ Product added!");
+      setMsg("Product Added");
       setForm({
         id: "",
         name: "",
@@ -36,7 +36,7 @@ const AddProductForm = () => {
         certifications: "",
       });
     } catch (err) {
-      setMsg("❌ Error: " + err.message);
+      setMsg("Error: " + err.message);
     }
   };
 

@@ -17,9 +17,9 @@ const ProductsByOwnerForm = () => {
     try {
       const result = await supplyChainActor.get_products_by_owner(form.owner);
       setProducts(result);
-      setMsg("✅ Products fetched!");
+      setMsg("Products Fetched");
     } catch (err) {
-      setMsg("❌ Error: " + (err.message || JSON.stringify(err)));
+      setMsg("Error: " + (err.message || JSON.stringify(err)));
       setProducts([]);
     }
   };

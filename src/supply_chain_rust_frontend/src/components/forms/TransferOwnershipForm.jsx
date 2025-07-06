@@ -15,10 +15,10 @@ const TransferOwnershipForm = () => {
     e.preventDefault();
     try {
       await supplyChainActor.transfer_ownership(form.productId, form.newOwner);
-      setMsg("✅ Ownership transferred!");
+      setMsg("Ownership transferred!");
       setForm({ productId: "", newOwner: "" });
     } catch (err) {
-      setMsg("❌ Error: " + (err.message || JSON.stringify(err)));
+      setMsg("Error: " + (err.message || JSON.stringify(err)));
     }
   };
 

@@ -18,10 +18,10 @@ const AddCertificationForm = () => {
     e.preventDefault();
     try {
       await supplyChainActor.add_certification(form.productId, form.certification);
-      setMsg("✅ Certification added successfully!");
+      setMsg("Certification Added Successfully");
       setForm({ productId: "", certification: "" });
     } catch (err) {
-      setMsg("❌ Error: " + (err.message || JSON.stringify(err)));
+      setMsg("Error: " + (err.message || JSON.stringify(err)));
     }
   };
 

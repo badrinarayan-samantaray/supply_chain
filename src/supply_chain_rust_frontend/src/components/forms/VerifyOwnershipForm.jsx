@@ -20,9 +20,9 @@ const VerifyOwnershipForm = () => {
         form.owner
       );
       setVerified(isOwner);
-      setMsg("✅ Verification complete.");
+      setMsg("Verification Complete.");
     } catch (err) {
-      setMsg("❌ Error: " + (err.message || JSON.stringify(err)));
+      setMsg("Error: " + (err.message || JSON.stringify(err)));
       setVerified(null);
     }
   };
@@ -61,9 +61,9 @@ const VerifyOwnershipForm = () => {
         {verified !== null && (
           <div className="result-box">
             {verified ? (
-              <p>✅ Yes, this user owns the product.</p>
+              <p>Yes, this user owns the product.</p>
             ) : (
-              <p>❌ No, this user does not own the product.</p>
+              <p>No, this user does not own the product.</p>
             )}
           </div>
         )}
