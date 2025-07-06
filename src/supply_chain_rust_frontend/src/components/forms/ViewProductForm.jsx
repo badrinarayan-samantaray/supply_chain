@@ -57,6 +57,7 @@ const ViewProductForm = () => {
           <button type="submit" className="form-button">View Product</button>
           {msg && <p className="form-message">{msg}</p>}
         </form>
+        
 
         {productData && (
           <div className="result-box">
@@ -70,6 +71,7 @@ const ViewProductForm = () => {
         )}
       </div>
     </BackgroundWrapper>
+    
   );
 };
 
