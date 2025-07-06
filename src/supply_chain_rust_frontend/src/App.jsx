@@ -29,10 +29,10 @@ function App() {
 
       {/* Hero Text */}
       <div className="hero">
-        <h1>Because the journey matters</h1>
+        <h1>See It. Trust It. Trace It. </h1>
+        <h3>— Powered by Blockchain</h3>
         <p>
-          Our blockchain-based traceability solution enables trust,
-          coordination, and transparency in fragmented supply chains.
+          Discover the future of supply chain management with our blockchain-based platform. Ensure complete transparency, verify certifications, and trace ownership — from source to shelf — with immutable records and real-time tracking.
         </p>
         <button className="btn" onClick={() => navigate("/landing")}>
           Get Started

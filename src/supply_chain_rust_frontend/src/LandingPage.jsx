@@ -30,10 +30,9 @@ function LandingPage() {
 
       {/* Landing Content */}
       <div className="hero-section">
-        <h1 className="hero-heading">Because the journey matters</h1>
+        <h1 className="hero-heading">Blockchain for Supply Chain: From Origin to Ownership</h1>
         <p className="hero-description">
-          Our blockchain-based traceability solution enables trust, coordination, and transparency
-          in fragmented supply chains.
+         Enhance consumer trust and regulatory compliance with end-to-end visibility. Our blockchain-powered solution guarantees product authenticity, secure data, and transparent ownership records.
         </p>
       </div>
     </>
