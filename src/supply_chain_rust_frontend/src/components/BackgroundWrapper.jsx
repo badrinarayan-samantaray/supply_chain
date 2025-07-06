@@ -16,7 +16,7 @@ const BackgroundWrapper = ({ children }) => {
           <img src={logo} alt="Logo" height="40" />
         </div>
         <nav className="nav-links">
-          <Link to="/">Home</Link>
+          <Link to="/landing">Home</Link>
           <Link to="/dashboard/add-product">Add Product</Link>
           <Link to="/dashboard/transfer">Transfer Ownership</Link>
           <Link to="/dashboard/certify">Add Certification</Link>
