@@ -6,7 +6,8 @@ import "../../form.scss";
 const AddCertificationForm = () => {
   const [msg, setMsg] = useState("");
   const [form, setForm] = useState({
-    productId: "", certification: ""
+    productId: "",
+    certification: ""
   });
 
   const handleChange = (e) => {
@@ -16,10 +17,11 @@ const AddCertificationForm = () => {
   const submitForm = async (e) => {
     e.preventDefault();
     try {
-      // TODO: Call appropriate actor method here
-      setMsg("✅ Success!");
+      await supplyChainActor.add_certification(form.productId, form.certification);
+      setMsg("✅ Certification added successfully!");
+      setForm({ productId: "", certification: "" });
     } catch (err) {
-      setMsg("❌ Error: " + err.message);
+      setMsg("❌ Error: " + (err.message || JSON.stringify(err)));
     }
   };
 
@@ -30,30 +32,28 @@ const AddCertificationForm = () => {
           <h2 className="form-title">Add Certification</h2>
           <div className="form-group">
             <input
+              className="form-input"
               type="text"
               name="productId"
               value={form.productId}
               onChange={handleChange}
+              placeholder="Product ID"
               required
-              className="form-input"
             />
-            <label className="form-label">Productid</label>
           </div>
           <div className="form-group">
             <input
+              className="form-input"
               type="text"
               name="certification"
               value={form.certification}
               onChange={handleChange}
+              placeholder="Certification (e.g. ISO9001)"
               required
-              className="form-input"
             />
-            <label className="form-label">Certification</label>
           </div>
-          <button type="submit" className="form-button">
-            Submit
-          </button>
-          {msg && <div className="form-msg">{msg}</div>}
+          <button type="submit" className="form-button">Add Certification</button>
+          {msg && <p className="form-message">{msg}</p>}
         </form>
       </div>
     </BackgroundWrapper>

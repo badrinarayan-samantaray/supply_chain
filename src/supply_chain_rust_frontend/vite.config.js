@@ -27,6 +27,14 @@ export default defineConfig({
       },
     },
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        // This prevents warnings about @import deprecation
+        quietDeps: true
+      }
+    }
+  },
   plugins: [
     react(),
     environment("all", { prefix: "CANISTER_" }),

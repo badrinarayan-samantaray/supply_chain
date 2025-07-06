@@ -5,9 +5,8 @@ import "../../form.scss";
 
 const ViewHistoryForm = () => {
   const [msg, setMsg] = useState("");
-  const [form, setForm] = useState({
-    productId: ""
-  });
+  const [form, setForm] = useState({ productId: "" });
+  const [history, setHistory] = useState([]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -16,10 +15,12 @@ const ViewHistoryForm = () => {
   const submitForm = async (e) => {
     e.preventDefault();
     try {
-      // TODO: Call appropriate actor method here
-      setMsg("✅ Success!");
+      const result = await supplyChainActor.get_history(form.productId);
+      setHistory(result);
+      setMsg("✅ History fetched!");
     } catch (err) {
-      setMsg("❌ Error: " + err.message);
+      setMsg("❌ Error: " + (err.message || JSON.stringify(err)));
+      setHistory([]);
     }
   };
 
@@ -30,20 +31,29 @@ const ViewHistoryForm = () => {
           <h2 className="form-title">View History</h2>
           <div className="form-group">
             <input
+              className="form-input"
               type="text"
               name="productId"
               value={form.productId}
               onChange={handleChange}
+              placeholder="Product ID"
               required
-              className="form-input"
             />
-            <label className="form-label">Productid</label>
           </div>
-          <button type="submit" className="form-button">
-            Submit
-          </button>
-          {msg && <div className="form-msg">{msg}</div>}
+          <button type="submit" className="form-button">View History</button>
+          {msg && <p className="form-message">{msg}</p>}
         </form>
+
+        {history.length > 0 && (
+          <div className="result-box">
+            <h3>Ownership History:</h3>
+            <ul>
+              {history.map((entry, index) => (
+                <li key={index}>{entry}</li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </BackgroundWrapper>
   );

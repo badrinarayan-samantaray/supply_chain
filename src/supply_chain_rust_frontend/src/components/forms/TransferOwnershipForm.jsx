@@ -5,9 +5,7 @@ import "../../form.scss";
 
 const TransferOwnershipForm = () => {
   const [msg, setMsg] = useState("");
-  const [form, setForm] = useState({
-    productId: "", newOwner: ""
-  });
+  const [form, setForm] = useState({ productId: "", newOwner: "" });
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -16,10 +14,11 @@ const TransferOwnershipForm = () => {
   const submitForm = async (e) => {
     e.preventDefault();
     try {
-      // TODO: Call appropriate actor method here
-      setMsg("✅ Success!");
+      await supplyChainActor.transfer_ownership(form.productId, form.newOwner);
+      setMsg("✅ Ownership transferred!");
+      setForm({ productId: "", newOwner: "" });
     } catch (err) {
-      setMsg("❌ Error: " + err.message);
+      setMsg("❌ Error: " + (err.message || JSON.stringify(err)));
     }
   };
 
@@ -30,28 +29,28 @@ const TransferOwnershipForm = () => {
           <h2 className="form-title">Transfer Ownership</h2>
           <div className="form-group">
             <input
+              className="form-input"
               type="text"
               name="productId"
               value={form.productId}
               onChange={handleChange}
+              placeholder="Product ID"
               required
-              className="form-input"
             />
-            <label className="form-label">Product Id</label>
           </div>
           <div className="form-group">
             <input
+              className="form-input"
               type="text"
               name="newOwner"
               value={form.newOwner}
               onChange={handleChange}
+              placeholder="New Owner Principal"
               required
-              className="form-input"
             />
-            <label className="form-label">New Owner</label>
           </div>
-          <button type="submit" className="form-button">Submit</button>
-          {msg && <div className="form-msg">{msg}</div>}
+          <button type="submit" className="form-button">Transfer</button>
+          {msg && <p className="form-message">{msg}</p>}
         </form>
       </div>
     </BackgroundWrapper>

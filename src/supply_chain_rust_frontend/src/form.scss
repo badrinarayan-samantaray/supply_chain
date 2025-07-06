@@ -120,3 +120,36 @@
     transform: translateY(0);
   }
 }
+
+
+.result-box {
+  margin-top: 1.5rem;
+  background: var(--input-bg);
+  color: var(--input-color);
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--form-radius);
+  box-shadow: var(--shadow);
+  line-height: 1.5;
+  font-size: 0.95rem;
+  animation: fadeInUp 0.5s ease;
+
+  h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: #222;
+  }
+
+  p,
+  li {
+    margin-bottom: 0.5rem;
+  }
+
+  ul {
+    padding-left: 1.2rem;
+  }
+
+  strong {
+    color: #333;
+  }
+}

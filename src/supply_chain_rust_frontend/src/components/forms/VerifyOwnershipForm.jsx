@@ -5,9 +5,8 @@ import "../../form.scss";
 
 const VerifyOwnershipForm = () => {
   const [msg, setMsg] = useState("");
-  const [form, setForm] = useState({
-    productId: "", owner: ""
-  });
+  const [form, setForm] = useState({ productId: "", owner: "" });
+  const [verified, setVerified] = useState(null);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -16,10 +15,15 @@ const VerifyOwnershipForm = () => {
   const submitForm = async (e) => {
     e.preventDefault();
     try {
-      // TODO: Call appropriate actor method here
-      setMsg("✅ Success!");
+      const isOwner = await supplyChainActor.verify_ownership(
+        form.productId,
+        form.owner
+      );
+      setVerified(isOwner);
+      setMsg("✅ Verification complete.");
     } catch (err) {
-      setMsg("❌ Error: " + err.message);
+      setMsg("❌ Error: " + (err.message || JSON.stringify(err)));
+      setVerified(null);
     }
   };
 
@@ -30,31 +34,39 @@ const VerifyOwnershipForm = () => {
           <h2 className="form-title">Verify Ownership</h2>
           <div className="form-group">
             <input
+              className="form-input"
               type="text"
               name="productId"
               value={form.productId}
               onChange={handleChange}
+              placeholder="Product ID"
               required
-              className="form-input"
             />
-            <label className="form-label">Productid</label>
           </div>
           <div className="form-group">
             <input
+              className="form-input"
               type="text"
               name="owner"
               value={form.owner}
               onChange={handleChange}
+              placeholder="Owner Principal"
               required
-              className="form-input"
             />
-            <label className="form-label">Owner</label>
           </div>
-          <button type="submit" className="form-button">
-            Submit
-          </button>
-          {msg && <div className="form-msg">{msg}</div>}
+          <button type="submit" className="form-button">Verify</button>
+          {msg && <p className="form-message">{msg}</p>}
         </form>
+
+        {verified !== null && (
+          <div className="result-box">
+            {verified ? (
+              <p>✅ Yes, this user owns the product.</p>
+            ) : (
+              <p>❌ No, this user does not own the product.</p>
+            )}
+          </div>
+        )}
       </div>
     </BackgroundWrapper>
   );

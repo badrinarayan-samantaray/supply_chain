@@ -5,9 +5,8 @@ import "../../form.scss";
 
 const ProductsByOwnerForm = () => {
   const [msg, setMsg] = useState("");
-  const [form, setForm] = useState({
-    owner: ""
-  });
+  const [form, setForm] = useState({ owner: "" });
+  const [products, setProducts] = useState([]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -16,10 +15,12 @@ const ProductsByOwnerForm = () => {
   const submitForm = async (e) => {
     e.preventDefault();
     try {
-      // TODO: Call appropriate actor method here
-      setMsg("✅ Success!");
+      const result = await supplyChainActor.get_products_by_owner(form.owner);
+      setProducts(result);
+      setMsg("✅ Products fetched!");
     } catch (err) {
-      setMsg("❌ Error: " + err.message);
+      setMsg("❌ Error: " + (err.message || JSON.stringify(err)));
+      setProducts([]);
     }
   };
 
@@ -30,20 +31,29 @@ const ProductsByOwnerForm = () => {
           <h2 className="form-title">Products By Owner</h2>
           <div className="form-group">
             <input
+              className="form-input"
               type="text"
               name="owner"
               value={form.owner}
               onChange={handleChange}
+              placeholder="Owner Principal"
               required
-              className="form-input"
             />
-            <label className="form-label">Owner</label>
           </div>
-          <button type="submit" className="form-button">
-            Submit
-          </button>
-          {msg && <div className="form-msg">{msg}</div>}
+          <button type="submit" className="form-button">View Products</button>
+          {msg && <p className="form-message">{msg}</p>}
         </form>
+
+        {products.length > 0 && (
+          <div className="result-box">
+            <h3>Owned Products:</h3>
+            <ul>
+              {products.map((id, idx) => (
+                <li key={idx}>{id}</li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </BackgroundWrapper>
   );
