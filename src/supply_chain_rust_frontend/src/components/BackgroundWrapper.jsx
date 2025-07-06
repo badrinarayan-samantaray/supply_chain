@@ -1,6 +1,6 @@
 import React from "react";
 import bgVideo from "../assets/VID_20240506_172609331 (1).mp4";
-import logo from "../assets/image.svg";
+import logo from "../assets/Screenshot_2025-07-05_203645-removebg-preview.png";
 import { Link } from "react-router-dom";
 
 const BackgroundWrapper = ({ children }) => {
