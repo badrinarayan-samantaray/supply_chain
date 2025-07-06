@@ -17,13 +17,13 @@ const BackgroundWrapper = ({ children }) => {
         </div>
         <nav className="nav-links">
           <Link to="/landing">Home</Link>
-          <Link to="/dashboard/add-product">Add Product</Link>
-          <Link to="/dashboard/transfer">Transfer Ownership</Link>
-          <Link to="/dashboard/certify">Add Certification</Link>
-          <Link to="/dashboard/owner">By Owner</Link>
-          <Link to="/dashboard/verify">Verify Ownership</Link>
-          <Link to="/dashboard/history">View History</Link>
-          <Link to="/dashboard/view">View Product</Link>
+          <Link to="/add-product">Add Product</Link>
+          <Link to="/transfer-ownership">Transfer Ownership</Link>
+          <Link to="/add-certification">Add Certification</Link>
+          <Link to="/products-by-owner">By Owner</Link>
+          <Link to="/verify-ownership">Verify Ownership</Link>
+          <Link to="/view-history">View History</Link>
+          <Link to="/view-product">View Product</Link>
         </nav>
       </header>
 

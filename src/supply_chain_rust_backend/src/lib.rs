@@ -1,6 +1,8 @@
 use ic_cdk::api::{caller, time};
 use ic_cdk_macros::{init, query, update};
-use ic_cdk::storage::stable_save;
+use ic_cdk::storage::{stable_save, stable_restore};
+use ic_cdk_macros::post_upgrade;
+use ic_cdk_macros::pre_upgrade;
 use candid::{Deserialize, CandidType};
 use std::collections::HashMap;
 
@@ -157,4 +159,22 @@ fn get_products_by_owner(owner: String) -> Vec<Product> {
     })
 }
 
+#[pre_upgrade]
+fn pre_upgrade() {
+    SUPPLY_CHAIN_DB.with(|db| {
+        stable_save((db.borrow().clone(),)).unwrap();
+    });
+}
+
+#[post_upgrade]
+fn post_upgrade() {
+    let (saved_db,): (SupplyChainDB,) = stable_restore().unwrap();
+    SUPPLY_CHAIN_DB.with(|db| {
+        *db.borrow_mut() = saved_db;
+    });
+}
+
+
+
 ic_cdk::export_candid!();
+

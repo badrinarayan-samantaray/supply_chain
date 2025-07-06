@@ -123,21 +123,24 @@
 
 
 .result-box {
-  margin-top: 1.5rem;
-  background: var(--input-bg);
-  color: var(--input-color);
-  padding: 1.25rem 1.5rem;
+  width: 100%;
+  max-width: 420px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
   border-radius: var(--form-radius);
+  padding: 2rem 1.75rem;
   box-shadow: var(--shadow);
-  line-height: 1.5;
-  font-size: 0.95rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   animation: fadeInUp 0.5s ease;
+  position: absolute;
 
   h3 {
     font-size: 1.2rem;
     font-weight: 600;
     margin-bottom: 0.75rem;
-    color: #222;
+    color: #ffffff;
   }
 
   p,
@@ -150,6 +153,17 @@
   }
 
   strong {
-    color: #333;
+    color: #ffffff;
   }
+}
+.close-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
 }

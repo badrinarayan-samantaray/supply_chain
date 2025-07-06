@@ -7,6 +7,7 @@ const ViewProductForm = () => {
   const [msg, setMsg] = useState("");
   const [form, setForm] = useState({ productId: "" });
   const [productData, setProductData] = useState(null);
+  const [showResult, setShowResult] = useState(false); // for closing the result box
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -22,19 +23,23 @@ const ViewProductForm = () => {
       if (result?.Ok) {
         setProductData(result.Ok);
         setMsg("✅ Product found!");
+        setShowResult(true);
       } 
       // Or Motoko-style direct object
       else if (result && typeof result === "object" && result.id) {
         setProductData(result);
         setMsg("✅ Product found!");
+        setShowResult(true);
       } 
       else {
         setProductData(null);
         setMsg("❌ Product not found.");
+        setShowResult(false);
       }
     } catch (err) {
       setMsg("❌ Error: " + (err.message || JSON.stringify(err)));
       setProductData(null);
+      setShowResult(false);
     }
   };
 
@@ -58,9 +63,15 @@ const ViewProductForm = () => {
           {msg && <p className="form-message">{msg}</p>}
         </form>
         
-
-        {productData && (
+        {productData && showResult && (
           <div className="result-box">
+            <button
+              className="close-button"
+              onClick={() => setShowResult(false)}
+              title="Close"
+            >
+              &times;
+            </button>
             <h3>Product Details:</h3>
             <p><strong>ID:</strong> {productData.id}</p>
             <p><strong>Name:</strong> {productData.name}</p>
@@ -71,7 +82,6 @@ const ViewProductForm = () => {
         )}
       </div>
     </BackgroundWrapper>
-    
   );
 };
 
