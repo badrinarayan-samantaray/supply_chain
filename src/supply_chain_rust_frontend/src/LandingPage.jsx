@@ -14,8 +14,10 @@ function LandingPage() {
       </video>
 
       {/* Logo and Navbar */}
+      
       <div className="top-bar">
         <img src={logo} alt="Logo" className="logo" />
+        
         <div className="nav-links">
           <Link to="/add-product">Add Product</Link>
           <Link to="/transfer-ownership">Transfer Ownership</Link>
@@ -34,6 +36,27 @@ function LandingPage() {
         <p className="hero-description">
          Enhance consumer trust and regulatory compliance with end-to-end visibility. Our blockchain-powered solution guarantees product authenticity, secure data, and transparent ownership records.
         </p>
+         <button className="btn" onClick={() => navigate("/")}>
+          Explore Products
+        </button>
+      </div>
+      <div className="right-section">
+        <h1 className="right-heading">Blockchain for Supply Chain: From Origin to Ownership</h1>
+        <p className="right-description">
+           Enhance consumer trust and regulatory compliance with end-to-end visibility. Our blockchain-powered solution guarantees product
+        </p>
+         <button className="btn" onClick={() => navigate("/")}>
+          Track Orders
+        </button>
+      </div>
+      <div className="sechero-section">
+        <h1 className="sechero-heading">Blockchain for Supply Chain: From Origin to Ownership</h1>
+        <p className="sechero-description">
+           Enhance consumer trust and regulatory compliance with end-to-end visibility. Our blockchain-powered solution guarantees product
+        </p>
+         <button className="btn" onClick={() => navigate("/")}>
+          Having Issues?
+        </button>
       </div>
     </>
   );
