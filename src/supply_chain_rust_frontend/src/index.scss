@@ -64,7 +64,7 @@ html, body {
   padding: 0;
   min-height: 100%;
   font-family: 'Inter', sans-serif;
-  overflow-x: hidden;  // Allow scrolling for dashboard pages
+  overflow: hidden;  // Allow scrolling for dashboard pages
   scroll-behavior: smooth;
 }
 .background-wrapper {
@@ -286,4 +286,105 @@ html, body {
 .sechero-description {
   font-size: 1.2rem;
   margin-top: 1rem;
+}
+
+
+
+
+
+
+/* === SECTION-BY-SECTION SCROLL SNAP EFFECT === */
+
+/* Container to enable snapping */
+.landing-scroll-container {
+  height: 100vh;
+  width: 100vw;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+/* Each scrollable section fills the viewport */
+.hero-section,
+.right-section,
+.sechero-section {
+  height: 100vh;
+  width: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding: 3rem 1vw;
+  box-sizing: border-box;
+  color: white;
+  z-index: 2;
+  position: relative;
+}
+
+.landing-scroll-container {
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* IE 10+ */
+}
+
+.landing-scroll-container::-webkit-scrollbar {
+  display: none;                /* Chrome, Safari, Opera */
+}
+
+
+
+/* Arrows */
+.scroll-arrow {
+  position: fixed;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  z-index: 999;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.8;
+  user-select: none;
+  transition: opacity 0.3s ease;
+}
+
+.scroll-arrow:hover {
+  opacity: 1;
+}
+
+.scroll-down {
+  bottom: 2rem;
+}
+
+.scroll-up {
+  top: 2rem;
+}
+
+
+
+
+.scroll-guide {
+  position: absolute;
+  bottom: 5vh;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1rem;
+  color: #fff;
+  opacity: 0.8;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: scrollFadeMove 2s infinite;
+  user-select: none;
+}
+
+.scroll-guide span {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+@keyframes scrollFadeMove {
+  0% { transform: translateX(-50%) translateY(0); opacity: 0.8; }
+  50% { transform: translateX(-50%) translateY(8px); opacity: 1; }
+  100% { transform: translateX(-50%) translateY(0); opacity: 0.8; }
 }

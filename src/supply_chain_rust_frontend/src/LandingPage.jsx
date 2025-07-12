@@ -2,9 +2,34 @@ import './index.scss';
 import sampleVideo from './assets/VID_20240506_172609331 (1).mp4';
 import logo from './assets/Screenshot_2025-07-05_203645-removebg-preview.png';
 import { Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
+
 
 function LandingPage() {
   const navigate = useNavigate();
+    const containerRef = useRef(null);
+  const [showScrollGuide, setShowScrollGuide] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (containerRef.current.scrollTop > 20) {
+        setShowScrollGuide(false);
+      } else {
+        setShowScrollGuide(true);
+      }
+    };
+
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener("scroll", handleScroll);
+    }
+
+    return () => {
+      if (container) {
+        container.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, []);
 
   return (
     <>
@@ -31,6 +56,7 @@ function LandingPage() {
       </div>
 
       {/* Landing Content */}
+      <div className="landing-scroll-container"  ref={containerRef}>
       <div className="hero-section">
         <h1 className="hero-heading">Blockchain for Supply Chain: From Origin to Ownership</h1>
         <p className="hero-description">
@@ -58,6 +84,14 @@ function LandingPage() {
           Having Issues?
         </button>
       </div>
+      </div>
+        {/* Scroll Guide (only when at top) */}
+      {showScrollGuide && (
+        <div className="scroll-guide">
+          <div>Uncover More</div>
+          <span>↓</span>
+        </div>
+      )}
     </>
   );
 }
