@@ -11,6 +11,8 @@ import ProductsByOwner from "./components/forms/ProductsByOwnerForm";
 import VerifyOwnership from "./components/forms/VerifyOwnershipForm";
 import ViewHistory from "./components/forms/ViewHistoryForm";
 import ViewProduct from "./components/forms/ViewProductForm";
+import Profile from "./Profile";
+
 
 
 import "./index.scss";
@@ -27,6 +29,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Route path="/verify-ownership" element={<VerifyOwnership />} />
       <Route path="/view-history" element={<ViewHistory />} />
       <Route path="/view-product" element={<ViewProduct />} />
+      <Route path="/profile" element={<Profile />} />
+
       
     </Routes>
   </Router>

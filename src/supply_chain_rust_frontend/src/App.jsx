@@ -3,9 +3,15 @@ import { useNavigate } from "react-router-dom";
 import "./index.scss"; // Must be at top
 import backgroundVideo from "./assets/VID_20240506_172609331 (1).mp4";
 import logo from "./assets/Screenshot_2025-07-05_203645-removebg-preview.png";
+import { useWalletConnectOnProfile } from "./walletConnectRouterPatch";
+
+
 
 function App() {
+  useWalletConnectOnProfile();
+
   const navigate = useNavigate();
+
 
   return (
     <div className="background-wrapper">
