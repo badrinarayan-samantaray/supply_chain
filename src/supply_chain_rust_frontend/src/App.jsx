@@ -28,7 +28,7 @@ function App() {
         <img src={logo} alt="Logo" className="logo" />
         <div className="nav-links">
           <button className="btn" onClick={() => navigate("/profile")}>
-            Profile
+            Connect Wallet
           </button>
         </div>
       </div>

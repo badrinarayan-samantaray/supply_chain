@@ -51,7 +51,7 @@ function LandingPage() {
           <Link to="/verify-ownership">Verify Ownership</Link>
           <Link to="/view-history">View History</Link>
           <Link to="/view-product">View Product</Link>
-          <button className="profile-button" onClick={() => navigate("/profile")}>Profile</button>
+          <button className="profile-button" onClick={() => navigate("/profile")}>Connect Wallet</button>
         </div>
       </div>
 
@@ -67,18 +67,18 @@ function LandingPage() {
         </button>
       </div>
       <div className="right-section">
-        <h1 className="right-heading">Blockchain for Supply Chain: From Origin to Ownership</h1>
+        <h1 className="right-heading">Unveiling the Product's Journey: From Origin to Destination</h1>
         <p className="right-description">
-           Enhance consumer trust and regulatory compliance with end-to-end visibility. Our blockchain-powered solution guarantees product
+           Leveraging the immutability and decentralized nature of blockchain technology, this section details the system's capabilities for real-time tracking of ordered products from their point of origin to their final destination.
         </p>
          <button className="btn" onClick={() => navigate("/")}>
           Track Orders
         </button>
       </div>
       <div className="sechero-section">
-        <h1 className="sechero-heading">Blockchain for Supply Chain: From Origin to Ownership</h1>
+        <h1 className="sechero-heading">Addressing the Hurdles: Issues in Blockchain-Powered Supply Chains</h1>
         <p className="sechero-description">
-           Enhance consumer trust and regulatory compliance with end-to-end visibility. Our blockchain-powered solution guarantees product
+           The challenges hindering the widespread adoption and effectiveness of blockchain for enhancing supply chain transparency. These issues include scalability, interoperability, data privacy, and the complexities associated with integrating blockchain into existing supply chain systems.
         </p>
          <button className="btn" onClick={() => navigate("/")}>
           Having Issues?
