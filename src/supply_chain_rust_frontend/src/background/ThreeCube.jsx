@@ -1,10 +1,15 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
+
 import { useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 
 
+
 export default function ThreeCube() {
   const group = useRef();
+  // store global pointer position
+const pointerRef = useRef({ x: 0, y: 0 });
+
   const { pointer } = useThree();
 
 const baseMat = new THREE.MeshStandardMaterial({
@@ -76,15 +81,37 @@ const glowMat = new THREE.MeshStandardMaterial({
     );
   };
 const initialRotation = useRef([Math.PI / 6, Math.PI / 6]);
+useEffect(() => {
+  const handlePointer = (e) => {
+    pointerRef.current.x = (e.clientX / window.innerWidth) * 2 - 1;
+    pointerRef.current.y = -(e.clientY / window.innerHeight) * 2 + 1;
+  };
+  window.addEventListener("pointermove", handlePointer, { passive: true });
+  return () => window.removeEventListener("pointermove", handlePointer);
+}, []);
+
   useFrame((_, dt) => {
     if (!group.current) return;
     // mouse nudge - subtle
-    const targetY = pointer.x * 0.25 + initialRotation.current[1];;
-    const targetX = -pointer.y * 0.25 + initialRotation.current[0];
-    group.current.rotation.y += (targetY - group.current.rotation.y) * Math.min(1, dt * 4);
-    group.current.rotation.x += (targetX - group.current.rotation.x) * Math.min(1, dt * 4);
+    const px = pointerRef.current.x;
+const py = pointerRef.current.y;
+
+// base = initial tilt
+const baseX = initialRotation.current[0];
+const baseY = initialRotation.current[1];
+
+// target rotation = initial tilt + pointer movement
+const targetY = baseY + px * 0.25;
+const targetX = baseX - py * 0.25;
+
+// smooth movement
+group.current.rotation.y += (targetY - group.current.rotation.y) * 0.1;
+group.current.rotation.x += (targetX - group.current.rotation.x) * 0.1;
+
+
     // tiny idle rotation around z so it doesn't feel static
     group.current.rotation.z += 0.002;
+    
     
   });
 
