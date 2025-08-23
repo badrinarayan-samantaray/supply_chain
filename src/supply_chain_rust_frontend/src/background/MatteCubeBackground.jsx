@@ -2,15 +2,16 @@ import React from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import ThreeCube from "./ThreeCube";
+import * as THREE from "three";
+import "./styles.css";
 
 function BackgroundGlow() {
   return (
     <mesh>
       <sphereGeometry args={[50, 64, 64]} />
-      <meshBasicMaterial
-        color={"#001100"} // dark base
-        side={2} // BackSide to render inside of sphere
-      />
+      <meshBasicMaterial color={"#041710"} side={2} />
+// BackSide to render inside of sphere
+      
     </mesh>
   );
 }
@@ -38,6 +39,17 @@ export default function MatteCubeBackground() {
         {/* Lights */}
         <ambientLight intensity={0.2} />
         <pointLight position={[0, 0, 5]} intensity={1.5} color={"#00ff66"} />
+        
+        <fog attach="fog" args={["#02150e", 10, 22]} />
+<ambientLight intensity={0.6} />
+<hemisphereLight
+  color={"#335e48"}
+  groundColor={"#020d08"}
+  intensity={0.6}
+/>
+<pointLight position={[0, 0, 5]} intensity={1.2} color={"#00ff66"} />
+<BackgroundGlow />
+
 
         {/* Cube */}
         <ThreeCube />
@@ -50,7 +62,9 @@ export default function MatteCubeBackground() {
           dampingFactor={0.1}
           target={[0, 0, 0]}
         />
+        
       </Canvas>
+      
     </div>
   );
 }

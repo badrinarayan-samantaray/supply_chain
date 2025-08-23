@@ -2,29 +2,37 @@ import React, { useRef } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 
+
 export default function ThreeCube() {
   const group = useRef();
   const { pointer } = useThree();
 
-  const baseMat = new THREE.MeshStandardMaterial({
-    color: "#0c0f0d",
-    roughness: 0.92,
-    metalness: 0.08,
-  });
+const baseMat = new THREE.MeshStandardMaterial({
+  color: "#0b3d2e",      // midnight green
+  roughness: 1.0,        // full matte
+  metalness: 2,
+});
 
-  const panelMat = new THREE.MeshStandardMaterial({
-    color: "#111716",
-    roughness: 0.86,
-    metalness: 0.18,
-  });
+const panelMat = new THREE.MeshStandardMaterial({
+  color: "#0f2f24",
+  roughness: 1.0,
+  metalness: 2,
+});
 
-  const glowMat = new THREE.MeshStandardMaterial({
-    color: "#00ff66",
-    emissive: "#9ce8b5",
-    emissiveIntensity: 1.6,
-    roughness: 0.4,
-    metalness: 2,
-  });
+const accentMat = new THREE.MeshStandardMaterial({
+  color: "#0e2a21",
+  roughness: 1.0,
+  metalness: 0.0,
+});
+
+const glowMat = new THREE.MeshStandardMaterial({
+  color: "#00ff66",
+  emissive: "#00ff66",
+  emissiveIntensity: 1.2,
+  roughness: 0.7,
+  metalness: 5,
+});
+
 
   const Face = ({ pos = [0, 0, 0.06], rot = [0, 0, 0] }) => (
     <group position={pos} rotation={rot}>
@@ -57,7 +65,8 @@ export default function ThreeCube() {
       <group>
         {pts.map((p, i) => (
           <group key={i} position={p}>
-            <pointLight color={"#0d371e"} intensity={1.15} distance={3} />
+            <pointLight color={"#00ff66"} intensity={1.8} distance={6} decay={2} />
+
             <mesh material={glowMat}>
               <sphereGeometry args={[0.06, 16, 16]} />
             </mesh>
@@ -81,6 +90,11 @@ const initialRotation = useRef([Math.PI / 6, Math.PI / 6]);
 
   return (
     <group ref={group} position={[0, 0, 0]}  rotation={[Math.PI / 6, Math.PI / 6, 0]}>
+      <hemisphereLight color={"#335e48"} groundColor={"#020d08"} intensity={0.4} />
+<pointLight position={[0, 0, -6]} intensity={0.7} color={"#09321f"} />
+
+
+
       <mesh material={baseMat}>
         <boxGeometry args={[2, 2, 2]} />
       </mesh>
