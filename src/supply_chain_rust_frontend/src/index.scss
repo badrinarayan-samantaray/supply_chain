@@ -420,3 +420,46 @@ html, body {
 .scroll-arrow {
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
+
+
+/* ==== Matte cube background (fixed, behind everything) ==== */
+.bg-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: -2;        /* keep it behind your UI */
+  pointer-events: none; /* UI remains clickable */
+}
+
+.bg-canvas canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+/* Optional: keep your existing dark overlay for readability */
+.overlay {
+  position: fixed;    /* ensure it also stays fixed */
+  inset: 0;
+  background: rgba(0,0,0,0.35); /* tweak to taste */
+  z-index: -1;        /* above the canvas, below content */
+}
+
+
+/* Make the R3F canvas inside our background fill the screen */
+.background-3d canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+.background-wrapper {
+  position: relative;
+  z-index: 1; // ✅ content above cube
+}
+
+.header,
+.hero,
+.overlay {
+  position: relative;
+  z-index: 2; // ✅ make sure UI stays clickable
+}

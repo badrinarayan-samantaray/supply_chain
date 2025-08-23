@@ -1,5 +1,5 @@
 import './index.scss';
-import sampleVideo from './assets/VID_20240506_172609331 (1).mp4';
+import MatteCubeBackground from "./background/MatteCubeBackground";
 import logo from './assets/Screenshot_2025-07-05_203645-removebg-preview.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
@@ -34,9 +34,7 @@ function LandingPage() {
   return (
     <>
       {/* Background Video */}
-      <video className="video-background" autoPlay loop muted playsInline>
-        <source src={sampleVideo} type="video/mp4" />
-      </video>
+     <MatteCubeBackground />
 
       {/* Logo and Navbar */}
       

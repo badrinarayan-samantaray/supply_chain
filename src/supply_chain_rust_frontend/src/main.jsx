@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import App from "./App";
+import WithCubeBackground from "./WithCubeBackground";
 import LandingPage from "./LandingPage";
 
 import AddProduct from "./components/forms/AddProductForm";
@@ -16,6 +17,8 @@ import Profile from "./Profile";
 
 
 import "./index.scss";
+
+const AppWithBackground = WithCubeBackground(App);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Router>
