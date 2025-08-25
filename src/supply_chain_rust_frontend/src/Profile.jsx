@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 function Profile() {
+  useEffect(() => {
+    // Redirect to Internet Identity when this page loads
+    const iiUrl = "https://identity.ic0.app/";
+    window.location.href = iiUrl;
+  }, []);
+
   return (
     <div className="profile-container">
       <h1>Connecting Wallet...</h1>

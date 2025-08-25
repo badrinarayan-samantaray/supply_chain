@@ -39,7 +39,11 @@ function LandingPage() {
       {/* Logo and Navbar */}
       
       <div className="top-bar">
-        <img src={logo} alt="Logo" className="logo" />
+        <a className="brand" href="/">
+  <img src={logo} alt="Cubily logo" className="logo" />
+  <span className="brand-name">Cubily</span>
+</a>
+
         
         <div className="nav-links">
           <Link to="/add-product">Add Product</Link>

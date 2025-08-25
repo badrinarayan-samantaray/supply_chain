@@ -7,7 +7,11 @@ const BackgroundWrapper = ({ children }) => {
   return (
       <><MatteCubeBackground /><div className="overlay"></div><header className="header">
       <div className="logo">
-        <img src={logo} alt="Logo" height="40" />
+        <a className="brand" href="/">
+  <img src={logo} alt="Cubily logo" className="logo" />
+  <span className="brand-name">Cubily</span>
+</a>
+
       </div>
       <nav className="nav-links">
         <Link to="/landing">Home</Link>

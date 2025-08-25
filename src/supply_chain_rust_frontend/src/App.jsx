@@ -23,7 +23,11 @@ function App() {
 
       {/* Header */}
       <div className="header">
-        <img src={logo} alt="Logo" className="logo" />
+        <a className="brand" href="/">
+  <img src={logo} alt="Cubily logo" className="logo" />
+  <span className="brand-name">Cubily</span>
+</a>
+
         <div className="nav-links">
           <button className="btn" onClick={() => navigate("/profile")}>
             Connect Wallet

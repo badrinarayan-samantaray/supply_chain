@@ -472,15 +472,30 @@ html, body {
 
 /* else defaults keep the rest of the page UI normal */
 
-/* Vignette background effect */
-.vignette-overlay {
-  position: fixed;
-  inset: 0;
-  pointer-events: none; /* make sure it doesn't block UI */
-  background: radial-gradient(
-    ellipse at center,
-    rgba(0, 0, 0, 0) 70%,
-    rgba(0, 0, 0, 0.6) 100%
-  );
-  z-index: -1; /* keep it above cube canvas but below content */
+/* --- Brand (logo + name) --- */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  pointer-events: auto; /* stays clickable even if overlay uses pointer-events:none */
+}
+
+.brand .logo {
+  height: 36px; /* adjust to your header size */
+  width: auto;
+  display: block;
+}
+
+.brand .brand-name {
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  font-size: clamp(14px, 2.1vw, 20px);
+  color: #ffffff; /* or your theme color */
+  line-height: 1;
+  user-select: none;
+}
+
+@media (max-width: 420px) {
+  .brand .brand-name { font-size: 16px; }
 }
