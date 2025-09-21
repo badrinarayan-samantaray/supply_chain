@@ -499,3 +499,119 @@ html, body {
 @media (max-width: 420px) {
   .brand .brand-name { font-size: 16px; }
 }
+
+
+/* === CHATGPT: FIXED HEADER + SCROLLABLE CONTENT (START) === */
+:root {
+  --header-height: 72px; /* change this value if your header needs to be taller/shorter */
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.25rem;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-sizing: border-box;
+}
+
+.header .logo img {
+  max-height: calc(var(--header-height) - 18px);
+  height: calc(var(--header-height) - 18px);
+  width: auto;
+  display: inline-block;
+}
+
+.content-overlay {
+  position: absolute;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 1.25rem;
+  box-sizing: border-box;
+  z-index: 10;
+}
+
+/* Prevent page (html/body) from scrolling — we only want .content-overlay to scroll */
+html, body, #root {
+  height: 100%;
+  overflow: hidden;
+}
+/* === CHATGPT: FIXED HEADER + SCROLLABLE CONTENT (END) === */
+/* === CHATGPT: FORM WRAPPER ADJUSTMENT (START) === */
+:root { --header-height: 72px; }
+
+.form-wrapper {
+  min-height: calc(100vh - var(--header-height));
+  max-height: calc(100vh - var(--header-height));
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 18px;
+  box-sizing: border-box;
+}
+
+.form-container {
+  max-height: calc(100vh - var(--header-height) - 40px);
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* Keep html/body from re-enabling global scroll */
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+/* === CHATGPT: FORM WRAPPER ADJUSTMENT (END) === */
+
+/* === CHATGPT: CUSTOM CHAIN-LIKE SCROLLBAR === */
+
+/* Works for Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000; /* black background for track */
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-image: repeating-linear-gradient(
+    45deg,
+    #00ff00 0px,
+    #00ff00 6px,
+    #000000 6px,
+    #000000 12px
+  );
+  border: 2px solid #000000; /* chain “outline” */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-image: repeating-linear-gradient(
+    45deg,
+    #00cc00 0px,
+    #00cc00 6px,
+    #000000 6px,
+    #000000 12px
+  );
+}
+
+/* Firefox (simpler) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #00ff00 #000000;
+}

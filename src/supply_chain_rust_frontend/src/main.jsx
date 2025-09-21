@@ -6,7 +6,7 @@ import WithCubeBackground from "./WithCubeBackground";
 import LandingPage from "./LandingPage";
 
 import AddProduct from "./components/forms/AddProductForm";
-import TransferOwnership from "./components/forms/TransferOwnershipForm";
+import Suppliers from "./components/forms/Suppliers";
 import AddCertification from "./components/forms/AddCertificationForm";
 import ProductsByOwner from "./components/forms/ProductsByOwnerForm";
 import VerifyOwnership from "./components/forms/VerifyOwnershipForm";
@@ -26,7 +26,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Route path="/" element={<App />} />
       <Route path="/landing" element={<LandingPage />} />
       <Route path="/add-product" element={<AddProduct />} />
-      <Route path="/transfer-ownership" element={<TransferOwnership />} />
+      <Route path="/suppliers" element={<Suppliers />} />
       <Route path="/add-certification" element={<AddCertification />} />
       <Route path="/products-by-owner" element={<ProductsByOwner />} />
       <Route path="/verify-ownership" element={<VerifyOwnership />} />
