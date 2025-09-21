@@ -12,6 +12,7 @@ const ViewProductForm = () => {
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
+  
 
   const submitForm = async (e) => {
     e.preventDefault();

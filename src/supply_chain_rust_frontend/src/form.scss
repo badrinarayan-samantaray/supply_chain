@@ -169,3 +169,19 @@
   cursor: pointer;
 }
 
+/* Ensure all form pages are scrollable */
+.form-container {
+  max-height: 100vh;       /* limit container height to viewport */
+  overflow-y: auto;        /* enable vertical scrolling */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Optional: smooth scrolling */
+html, body {
+  height: 100%;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+
