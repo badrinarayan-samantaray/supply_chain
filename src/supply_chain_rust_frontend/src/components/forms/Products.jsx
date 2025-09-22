@@ -93,13 +93,52 @@ const Products = () => {
     }
   }
 
-  function assignLocalMapping(product) {
-    const localId = `LP-${Date.now()}-${Math.floor(Math.random() * 9000)}`;
-    setLocalMap((m) => ({
+ // --- REPLACE assignLocalMapping in Products.jsx ---
+async function assignLocalMapping(product) {
+  // Load counter from localStorage or start at 101
+  let counter = parseInt(localStorage.getItem("localIdCounter") || "100", 10);
+  counter += 1;
+  const localId = `P-${counter}`;
+  localStorage.setItem("localIdCounter", counter.toString());
+
+  // Add a local mapping (don't overwrite if already exists)
+  setLocalMap((m) => {
+    if (m[localId]) return m;
+    return {
       ...m,
-      [localId]: { localProductId: localId, sourceId: product.sourceId, title: product.title, supplierId: selectedSupplier, image: product.image, createdAt: new Date().toISOString() },
-    }));
+      [localId]: {
+        localProductId: localId,
+        sourceId: product.sourceId,
+        title: product.title || product.name || `Product-${localId}`,
+        supplierId: selectedSupplier,
+        image: product.image,
+        createdAt: new Date().toISOString(),
+      },
+    };
+  });
+
+  try {
+    const name = product.title || product.name || `Product-${localId}`;
+    const origin = selectedSupplier || "";
+    const certifications = [];
+    let descriptionArr = [];
+
+    if (product.description) {
+      if (Array.isArray(product.description)) descriptionArr = product.description;
+      else if (typeof product.description === "string") descriptionArr = [product.description];
+      else descriptionArr = [String(product.description)];
+    }
+
+    // Add to backend with sequential localId
+    await supplyChainActor.add_product(localId, name, origin, certifications, descriptionArr);
+
+    console.log("[assignLocalMapping] added product in background:", localId);
+  } catch (err) {
+    console.warn("[assignLocalMapping] background add_product failed for", localId, err);
   }
+}
+// --- end replacement ---
+
 
   function removeLocalMapping(localId) {
     setLocalMap((m) => {
