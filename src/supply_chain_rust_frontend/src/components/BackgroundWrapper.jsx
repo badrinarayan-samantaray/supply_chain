@@ -16,9 +16,9 @@ const BackgroundWrapper = ({ children }) => {
       <nav className="nav-links">
         <Link to="/landing">Home</Link>
         <Link to="/add-product">Add Product</Link>
+        <Link to="/products">Products</Link>
         <Link to="/suppliers">Suppliers</Link>
         <Link to="/add-certification">Add Certification</Link>
-        <Link to="/products-by-owner">By Owner</Link>
         <Link to="/verify-ownership">Verify Ownership</Link>
         <Link to="/view-history">View History</Link>
         <Link to="/view-product">View Product</Link>

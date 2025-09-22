@@ -19,7 +19,7 @@
 
 .form-container {
   width: 100%;
-  max-width: 420px;
+  max-width: 800px;
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
   border-radius: var(--form-radius);
@@ -171,7 +171,7 @@
 
 /* Ensure all form pages are scrollable */
 .form-container {
-  max-height: 100vh;       /* limit container height to viewport */
+  max-height: 80vh;       /* limit container height to viewport */
   overflow-y: auto;        /* enable vertical scrolling */
   padding: 20px;
   box-sizing: border-box;
@@ -185,3 +185,61 @@ html, body {
 }
 
 
+.form-centered {
+margin: 0 auto;
+max-width: 1200px ;
+display: block;
+}
+
+
+.form-select {
+color: #000 !important; /* text black */
+background-color: #fff;
+}
+
+
+.form-select option {
+color: #000; /* dropdown list text black */
+}
+
+
+/* Flipkart-like product image sizing */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+
+
+.product-image {
+  width: 180px;
+  height: 180px; /* fixed square box like Flipkart */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  margin-top: 75px;
+}
+
+.product-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* keeps aspect ratio */
+}
+
+.no-image {
+  width: 100%;
+  height: 100%;
+  font-size: 0.8rem;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed #ccc;
+}
+
+
+.form-input {
+  color: black; /* ✅ ensures text inside inputs & select stays black */
+}

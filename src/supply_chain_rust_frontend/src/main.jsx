@@ -8,7 +8,7 @@ import LandingPage from "./LandingPage";
 import AddProduct from "./components/forms/AddProductForm";
 import Suppliers from "./components/forms/Suppliers";
 import AddCertification from "./components/forms/AddCertificationForm";
-import ProductsByOwner from "./components/forms/ProductsByOwnerForm";
+import Products from "./components/forms/Products";
 import VerifyOwnership from "./components/forms/VerifyOwnershipForm";
 import ViewHistory from "./components/forms/ViewHistoryForm";
 import ViewProduct from "./components/forms/ViewProductForm";
@@ -28,7 +28,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Route path="/add-product" element={<AddProduct />} />
       <Route path="/suppliers" element={<Suppliers />} />
       <Route path="/add-certification" element={<AddCertification />} />
-      <Route path="/products-by-owner" element={<ProductsByOwner />} />
+      <Route path="/products" element={<Products />} />
       <Route path="/verify-ownership" element={<VerifyOwnership />} />
       <Route path="/view-history" element={<ViewHistory />} />
       <Route path="/view-product" element={<ViewProduct />} />

@@ -47,9 +47,9 @@ function LandingPage() {
         
         <div className="nav-links">
           <Link to="/add-product">Add Product</Link>
+          <Link to="/products">Products</Link>
           <Link to="/suppliers">Suppliers</Link>
           <Link to="/add-certification">Add Certification</Link>
-          <Link to="/products-by-owner">By Owner</Link>
           <Link to="/verify-ownership">Verify Ownership</Link>
           <Link to="/view-history">View History</Link>
           <Link to="/view-product">View Product</Link>
@@ -64,7 +64,7 @@ function LandingPage() {
         <p className="hero-description">
          Enhance consumer trust and regulatory compliance with end-to-end visibility. Our blockchain-powered solution guarantees product authenticity, secure data, and transparent ownership records.
         </p>
-         <button className="btn" onClick={() => navigate("/")}>
+         <button className="btn" onClick={() => navigate("/products")}>
           Explore Products
         </button>
       </div>
@@ -82,7 +82,7 @@ function LandingPage() {
         <p className="sechero-description">
            The challenges hindering the widespread adoption and effectiveness of blockchain for enhancing supply chain transparency. These issues include scalability, interoperability, data privacy, and the complexities associated with integrating blockchain into existing supply chain systems.
         </p>
-         <button className="btn" onClick={() => navigate("/")}>
+         <button className="btn" onClick={() => navigate("/profile")}>
           Having Issues?
         </button>
       </div>
